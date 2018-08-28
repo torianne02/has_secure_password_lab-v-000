@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     if params[:password] == params[:password_confirmation] && @user.save
       session[:user_id] = @user.id
       redirect_to root_path
+    else
+      redirect_to(controller: 'users', action: 'new')
+    end
   end
 
   private
