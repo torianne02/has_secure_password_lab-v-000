@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   root 'application#welcome'
   # The priority is based upon order of creation: first created -> highest priority.
