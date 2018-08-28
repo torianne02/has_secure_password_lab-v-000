@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params).save
+    @user = User.new(user_params)
+    if params[:password] == params[:password_confirmation] && @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
   end
 
   private
